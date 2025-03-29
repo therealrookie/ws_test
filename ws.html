@@ -3,7 +3,7 @@
 <script>
   var ws = new WebSocket("wss://ohmcord.robinvollbracht.com:443");
 
-  ws.onopen = function () {
+  ws.onopen = function (e) {
     console.log("Websocket is connected ...");
     ws.send("Connected");
   };
@@ -11,5 +11,14 @@
   ws.onmessage = function (ev) {
     console.log(ev);
     ws.send("Response: Hello!!");
+  };
+
+  ws.onclose = function (e) {
+    console.log(e.code);
+    console.log(e.reason);
+  };
+
+  ws.onerror = function (e) {
+    console.log(e);
   };
 </script>
