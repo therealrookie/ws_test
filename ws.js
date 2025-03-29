@@ -14,7 +14,7 @@ wss.on("connection", function (ws) {
 */
 
 const WebSocket = require("ws");
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.WS_PORT || 3000;
 const wss = new WebSocket.Server({ port: PORT });
 wss.on("connection", (ws) => {
   ws.on("message", (message) => {
