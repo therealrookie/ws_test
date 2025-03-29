@@ -1,0 +1,15 @@
+<h1>Web Socket Example</h1>
+<p>open console to see connection.</p>
+<script>
+  var ws = new WebSocket("wss://ohmcord.robinvollbracht.com:443");
+
+  ws.onopen = function () {
+    console.log("Websocket is connected ...");
+    ws.send("Connected");
+  };
+
+  ws.onmessage = function (ev) {
+    console.log(ev);
+    ws.send("Response: Hello!!");
+  };
+</script>
