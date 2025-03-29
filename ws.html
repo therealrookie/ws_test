@@ -1,24 +1,41 @@
-<h1>Web Socket Example</h1>
-<p>open console to see connection.</p>
-<script>
-  var ws = new WebSocket("wss://ohmcord.robinvollbracht.com");
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WebSocket Example</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>WebSocket Example</h1>
+    <p>Open the console to see the connection logs.</p>
 
-  ws.onopen = function (e) {
-    console.log("Websocket is connected ...");
-    ws.send("Connected");
-  };
+    <script>
+      var ws = new WebSocket("wss://ohmcord.robinvollbracht.com");
 
-  ws.onmessage = function (ev) {
-    console.log(ev);
-    ws.send("Response: Hello!!");
-  };
+      ws.onopen = function (e) {
+        console.log("WebSocket is connected...");
+        ws.send("Connected");
+      };
 
-  ws.onclose = function (e) {
-    console.log(e.code);
-    console.log(e.reason);
-  };
+      ws.onmessage = function (ev) {
+        console.log("Message received:", ev.data);
+        ws.send("Response: Hello!!");
+      };
 
-  ws.onerror = function (e) {
-    console.log(e);
-  };
-</script>
+      ws.onclose = function (e) {
+        console.log("WebSocket closed:", e.code, e.reason);
+      };
+
+      ws.onerror = function (e) {
+        console.error("WebSocket error:", e);
+      };
+    </script>
+  </body>
+</html>
