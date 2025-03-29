@@ -11,7 +11,7 @@ wss.on("connection", function (ws) {
   setInterval(() => ws.send(`${new Date()}`), 5000);
 });
 
-*/
+
 
 const WebSocket = require("ws");
 const PORT = process.env.WS_PORT || 3000;
@@ -22,3 +22,5 @@ wss.on("connection", (ws) => {
   });
   ws.send("Hello! Message From Server!!");
 });
+
+*/
